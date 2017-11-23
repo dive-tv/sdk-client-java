@@ -83,6 +83,7 @@ public class ApiClient {
     public static final double JAVA_VERSION;
     public static final boolean IS_ANDROID;
     public static final int ANDROID_SDK_VERSION;
+    private static final Map<String, String> ENVIRONMENT_BASE_PATHS;
 
     static {
         JAVA_VERSION = Double.parseDouble(System.getProperty("java.specification.version"));
@@ -105,6 +106,12 @@ public class ApiClient {
             }
         }
         ANDROID_SDK_VERSION = sdkVersion;
+
+        // Base path by environment
+		ENVIRONMENT_BASE_PATHS = new HashMap<String, String>();
+		ENVIRONMENT_BASE_PATHS.put("dev", "https://dev-rest.dive.tv/v1");
+		ENVIRONMENT_BASE_PATHS.put("pre", "https://pre-rest.dive.tv/v1");
+		ENVIRONMENT_BASE_PATHS.put("pro", "https://rest.dive.tv/v1");
     }
 
     /**
@@ -138,6 +145,16 @@ public class ApiClient {
      * Constructor for ApiClient
      */
     public ApiClient() {
+        initialize();
+    }
+
+    public ApiClient(String environment) {
+        if (ENVIRONMENT_BASE_PATHS.containsKey(environment))
+			this.basePath = ENVIRONMENT_BASE_PATHS.get(environment);
+		initialize();
+    }
+
+    private void initialize() {
         httpClient = new OkHttpClient();
 
 
