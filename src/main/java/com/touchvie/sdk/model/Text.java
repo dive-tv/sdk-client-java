@@ -26,13 +26,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 /**
  * CardContainer composed by a block of text with an optional source attribution
  */
 @ApiModel(description = "CardContainer composed by a block of text with an optional source attribution")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class Text extends CardContainer {
+
+public class Text extends CardContainer implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   /**
    * Text container content type
    */

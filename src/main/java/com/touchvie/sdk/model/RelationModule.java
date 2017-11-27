@@ -22,14 +22,17 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Relation modules provide lists of cards related to the current one. It&#39;s contents depend on the module &#39;type&#39; attribute
  */
 @ApiModel(description = "Relation modules provide lists of cards related to the current one. It's contents depend on the module 'type' attribute")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
 
-public class RelationModule {
+
+public class RelationModule implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   /**
    * Relation module type, defines the contained data structure
    */

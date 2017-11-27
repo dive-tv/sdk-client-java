@@ -26,13 +26,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 /**
  * Serie seasons listing
  */
 @ApiModel(description = "Serie seasons listing")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class Seasons extends CardContainer {
+
+public class Seasons extends CardContainer implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   /**
    * Seasons container content type
    */

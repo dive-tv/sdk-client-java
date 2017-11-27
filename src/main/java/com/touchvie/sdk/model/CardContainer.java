@@ -22,14 +22,17 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Card static data container. It&#39;s content depends on the &#39;type&#39; parameter value and is represented by the schema of the same name
  */
 @ApiModel(description = "Card static data container. It's content depends on the 'type' parameter value and is represented by the schema of the same name")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
 
-public class CardContainer {
+
+public class CardContainer implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   /**
    * Card container format type, determines the format of the &#39;data&#39; field
    */

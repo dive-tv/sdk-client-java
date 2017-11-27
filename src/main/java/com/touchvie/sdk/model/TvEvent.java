@@ -23,13 +23,16 @@ import com.touchvie.sdk.model.Card;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * TV event information
  */
 @ApiModel(description = "TV event information")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class TvEvent {
+
+public class TvEvent implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   @SerializedName("channel_id")
   private String channelId = null;
 

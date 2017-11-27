@@ -25,12 +25,15 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 /**
  * CatalogData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class CatalogData {
+
+public class CatalogData implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   @SerializedName("background_image")
   private String backgroundImage = null;
 

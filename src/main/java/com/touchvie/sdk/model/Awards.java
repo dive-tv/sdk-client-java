@@ -26,13 +26,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 /**
  * CardContainer composed by a list of awards with nominees and winners
  */
 @ApiModel(description = "CardContainer composed by a list of awards with nominees and winners")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class Awards extends CardContainer {
+
+public class Awards extends CardContainer implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   /**
    * Awards container content type
    */

@@ -23,12 +23,15 @@ import com.touchvie.sdk.model.SourceData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * LinkData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class LinkData {
+
+public class LinkData implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   @SerializedName("url")
   private String url = null;
 

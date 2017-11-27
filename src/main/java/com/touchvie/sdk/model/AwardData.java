@@ -22,13 +22,16 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Award nominee or winner info
  */
 @ApiModel(description = "Award nominee or winner info")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class AwardData {
+
+public class AwardData implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   @SerializedName("title")
   private String title = null;
 

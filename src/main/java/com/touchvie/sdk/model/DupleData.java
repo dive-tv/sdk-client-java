@@ -23,12 +23,15 @@ import com.touchvie.sdk.model.Card;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * DupleData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class DupleData {
+
+public class DupleData implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   @SerializedName("rel_type")
   private String relType = null;
 

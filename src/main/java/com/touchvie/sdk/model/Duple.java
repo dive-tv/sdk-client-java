@@ -26,13 +26,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 /**
  * List of related pairs of cards, each pair having a relationship type between both cards
  */
 @ApiModel(description = "List of related pairs of cards, each pair having a relationship type between both cards")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class Duple extends RelationModule {
+
+public class Duple extends RelationModule implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   /**
    * Duple module content type, defines what kind of relations are contained in the module
    */

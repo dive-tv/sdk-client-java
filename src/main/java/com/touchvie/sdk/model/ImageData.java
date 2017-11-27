@@ -24,13 +24,16 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.io.Serializable;
 
 /**
  * Linked image URL and additional information
  */
 @ApiModel(description = "Linked image URL and additional information")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class ImageData {
+
+public class ImageData implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   @SerializedName("thumb")
   private String thumb = null;
 

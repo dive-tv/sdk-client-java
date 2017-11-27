@@ -22,12 +22,15 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * MovieStatus
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class MovieStatus {
+
+public class MovieStatus implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   @SerializedName("movie_id")
   private String movieId = null;
 

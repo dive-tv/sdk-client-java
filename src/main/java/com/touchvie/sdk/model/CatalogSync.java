@@ -22,13 +22,16 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Dive interactive capabilities of this catalog item
  */
 @ApiModel(description = "Dive interactive capabilities of this catalog item")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class CatalogSync {
+
+public class CatalogSync implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   @SerializedName("is_synchronizable")
   private Boolean isSynchronizable = null;
 

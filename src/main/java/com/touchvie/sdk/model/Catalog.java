@@ -26,13 +26,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 /**
  * CardContainer composed by additional information of a catalog item (movie, serie or chapter)
  */
 @ApiModel(description = "CardContainer composed by additional information of a catalog item (movie, serie or chapter)")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class Catalog extends CardContainer {
+
+public class Catalog extends CardContainer implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   /**
    * Catalog container content type
    */

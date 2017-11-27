@@ -29,13 +29,16 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 /**
  * Basic Dive data unit, represents an item of a given category
  */
 @ApiModel(description = "Basic Dive data unit, represents an item of a given category")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-23T13:15:20.476+01:00")
-public class Card {
+
+public class Card implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   @SerializedName("card_id")
   private String cardId = null;
 
