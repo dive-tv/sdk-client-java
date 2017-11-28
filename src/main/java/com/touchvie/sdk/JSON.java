@@ -19,18 +19,36 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.internal.Streams;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.touchvie.sdk.model.Awards;
+import com.touchvie.sdk.model.CardContainer;
+import com.touchvie.sdk.model.Catalog;
+import com.touchvie.sdk.model.Duple;
+import com.touchvie.sdk.model.Image;
+import com.touchvie.sdk.model.Link;
+import com.touchvie.sdk.model.Listing;
+import com.touchvie.sdk.model.Rating;
+import com.touchvie.sdk.model.RelationModule;
+import com.touchvie.sdk.model.Seasons;
+import com.touchvie.sdk.model.Single;
+import com.touchvie.sdk.model.Text;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.lang.reflect.Type;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
@@ -48,10 +66,27 @@ public class JSON {
      */
     public JSON(ApiClient apiClient) {
         this.apiClient = apiClient;
+        RuntimeTypeAdapterFactory<RelationModule> relationModuleTypeFactory = RuntimeTypeAdapterFactory
+                .of(RelationModule.class, "type")
+                .registerSubtype(Single.class, "single")
+                .registerSubtype(Duple.class, "duple");
+        RuntimeTypeAdapterFactory<CardContainer> CardContainerTypeFactory = RuntimeTypeAdapterFactory
+                .of(CardContainer.class, "type")
+                .registerSubtype(Text.class, "text")
+                .registerSubtype(Listing.class, "listing")
+        		.registerSubtype(Rating.class, "rating")
+        		.registerSubtype(com.touchvie.sdk.model.Map.class, "map")
+        		.registerSubtype(Link.class, "link")
+        		.registerSubtype(Awards.class, "awards")
+        		.registerSubtype(Catalog.class, "catalog")
+        		.registerSubtype(Seasons.class, "seasons")
+        		.registerSubtype(Image.class, "image");
         gson = new GsonBuilder()
             .registerTypeAdapter(Date.class, new DateAdapter(apiClient))
             .registerTypeAdapter(DateTime.class, new DateTimeTypeAdapter())
             .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
+            .registerTypeAdapterFactory(relationModuleTypeFactory)
+            .registerTypeAdapterFactory(CardContainerTypeFactory)
             .create();
     }
 
@@ -222,4 +257,158 @@ class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
                 return formatter.parseLocalDate(date);
         }
     }
+}
+
+class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
+	private final Class<?> baseType;
+	private final String typeFieldName;
+	private final Map<String, Class<?>> labelToSubtype = new LinkedHashMap<String, Class<?>>();
+	private final Map<Class<?>, String> subtypeToLabel = new LinkedHashMap<Class<?>, String>();
+
+	private RuntimeTypeAdapterFactory(Class<?> baseType, String typeFieldName) {
+		if (typeFieldName == null || baseType == null) {
+			throw new NullPointerException();
+		}
+		this.baseType = baseType;
+		this.typeFieldName = typeFieldName;
+	}
+
+	/**
+	 * Creates a new runtime type adapter using for {@code baseType} using
+	 * {@code
+	 * typeFieldName} as the type field name. Type field names are case
+	 * sensitive.
+	 */
+	public static <T> RuntimeTypeAdapterFactory<T> of(Class<T> baseType, String typeFieldName) {
+		return new RuntimeTypeAdapterFactory<T>(baseType, typeFieldName);
+	}
+
+	/**
+	 * Creates a new runtime type adapter for {@code baseType} using
+	 * {@code "type"} as the type field name.
+	 */
+	public static <T> RuntimeTypeAdapterFactory<T> of(Class<T> baseType) {
+		return new RuntimeTypeAdapterFactory<T>(baseType, "type");
+	}
+
+	/**
+	 * Registers {@code type} identified by {@code label}. Labels are case
+	 * sensitive.
+	 *
+	 * @throws IllegalArgumentException
+	 *             if either {@code type} or {@code label} have already been
+	 *             registered on this type adapter.
+	 */
+	public RuntimeTypeAdapterFactory<T> registerSubtype(Class<? extends T> type, String label) {
+		if (type == null || label == null) {
+			throw new NullPointerException();
+		}
+		if (subtypeToLabel.containsKey(type) || labelToSubtype.containsKey(label)) {
+			throw new IllegalArgumentException("types and labels must be unique");
+		}
+		labelToSubtype.put(label, type);
+		subtypeToLabel.put(type, label);
+		return this;
+	}
+
+	/**
+	 * Registers {@code type} identified by its {@link Class#getSimpleName
+	 * simple name}. Labels are case sensitive.
+	 *
+	 * @throws IllegalArgumentException
+	 *             if either {@code type} or its simple name have already been
+	 *             registered on this type adapter.
+	 */
+	public RuntimeTypeAdapterFactory<T> registerSubtype(Class<? extends T> type) {
+		return registerSubtype(type, type.getSimpleName());
+	}
+
+	public <R> TypeAdapter<R> create(Gson gson, TypeToken<R> type) {
+		if (type.getRawType() != baseType) {
+			return null;
+		}
+
+		final Map<String, TypeAdapter<?>> labelToDelegate = new LinkedHashMap<String, TypeAdapter<?>>();
+		final Map<Class<?>, TypeAdapter<?>> subtypeToDelegate = new LinkedHashMap<Class<?>, TypeAdapter<?>>();
+		for (Map.Entry<String, Class<?>> entry : labelToSubtype.entrySet()) {
+			TypeAdapter<?> delegate = gson.getDelegateAdapter(this, TypeToken.get(entry.getValue()));
+			labelToDelegate.put(entry.getKey(), delegate);
+			subtypeToDelegate.put(entry.getValue(), delegate);
+		}
+
+		return new TypeAdapter<R>() {
+			@Override
+			public R read(JsonReader in) throws IOException {
+				JsonElement jsonElement = Streams.parse(in);
+				JsonElement labelJsonElement = jsonElement.getAsJsonObject().remove(typeFieldName);
+				if (labelJsonElement == null) {
+					throw new JsonParseException("cannot deserialize " + baseType
+							+ " because it does not define a field named " + typeFieldName);
+				}
+				String label = labelJsonElement.getAsString();
+				@SuppressWarnings("unchecked") // registration requires that
+												// subtype extends T
+				TypeAdapter<R> delegate = (TypeAdapter<R>) labelToDelegate.get(label);
+				if (delegate == null) {
+					throw new JsonParseException("cannot deserialize " + baseType + " subtype named " + label
+							+ "; did you forget to register a subtype?");
+				}
+				R result = delegate.fromJsonTree(jsonElement);
+				postProcess(result);
+				return result;
+			}
+
+			private void postProcess(R result) {
+				if (result instanceof RelationModule) {
+					if (result instanceof Duple)
+						((Duple) result).setType(RelationModule.TypeEnum.DUPLE);
+					else if (result instanceof Single)
+						((Single) result).setType(RelationModule.TypeEnum.SINGLE);
+				} else if (result instanceof CardContainer) {
+					if (result instanceof Text)
+						((Text) result).setType(CardContainer.TypeEnum.TEXT);
+					else if (result instanceof Listing)
+						((Listing) result).setType(CardContainer.TypeEnum.LISTING);
+					else if (result instanceof Rating)
+						((Rating) result).setType(CardContainer.TypeEnum.RATING);
+					else if (result instanceof com.touchvie.sdk.model.Map)
+						((com.touchvie.sdk.model.Map) result).setType(CardContainer.TypeEnum.MAP);
+					else if (result instanceof Link)
+						((Link) result).setType(CardContainer.TypeEnum.LINK);
+					else if (result instanceof Awards)
+						((Awards) result).setType(CardContainer.TypeEnum.AWARDS);
+					else if (result instanceof Catalog)
+						((Catalog) result).setType(CardContainer.TypeEnum.CATALOG);
+					else if (result instanceof Seasons)
+						((Seasons) result).setType(CardContainer.TypeEnum.SEASONS);
+					else if (result instanceof Image)
+						((Image) result).setType(CardContainer.TypeEnum.IMAGE);
+				}
+			}
+
+			@Override
+			public void write(JsonWriter out, R value) throws IOException {
+				Class<?> srcType = value.getClass();
+				String label = subtypeToLabel.get(srcType);
+				@SuppressWarnings("unchecked") // registration requires that
+												// subtype extends T
+				TypeAdapter<R> delegate = (TypeAdapter<R>) subtypeToDelegate.get(srcType);
+				if (delegate == null) {
+					throw new JsonParseException(
+							"cannot serialize " + srcType.getName() + "; did you forget to register a subtype?");
+				}
+				JsonObject jsonObject = delegate.toJsonTree(value).getAsJsonObject();
+				if (jsonObject.has(typeFieldName)) {
+					throw new JsonParseException("cannot serialize " + srcType.getName()
+							+ " because it already defines a field named " + typeFieldName);
+				}
+				JsonObject clone = new JsonObject();
+				clone.add(typeFieldName, new JsonPrimitive(label));
+				for (Map.Entry<String, JsonElement> e : jsonObject.entrySet()) {
+					clone.add(e.getKey(), e.getValue());
+				}
+				Streams.write(clone, out);
+			}
+		}.nullSafe();
+	}
 }
