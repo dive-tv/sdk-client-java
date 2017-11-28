@@ -32,8 +32,71 @@ import java.io.Serializable;
 public class DupleData implements Serializable {
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Indicates the relationship between the pair of cards (from &gt; rel_type &gt; to)
+   */
+  @JsonAdapter(RelTypeEnum.Adapter.class)
+  public enum RelTypeEnum {
+    PLAYS("plays"),
+    
+    STARRED_BY("starred_by"),
+    
+    REPRESENTS("represents"),
+    
+    FEATURES_LOCATION("features_location"),
+    
+    DIRECTS("directs"),
+    
+    ACTS_IN("acts_in"),
+    
+    PLAYED_BY("played_by"),
+    
+    WORN_BY("worn_by"),
+    
+    FILMED_IN("filmed_in"),
+    
+    LOCATION_ON_MOVIE("location_on_movie");
+
+    private String value;
+
+    RelTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static RelTypeEnum fromValue(String text) {
+      for (RelTypeEnum b : RelTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<RelTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final RelTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public RelTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return RelTypeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
   @SerializedName("rel_type")
-  private String relType = null;
+  private RelTypeEnum relType = null;
 
   @SerializedName("from")
   private Card from = null;
@@ -41,7 +104,7 @@ public class DupleData implements Serializable {
   @SerializedName("to")
   private Card to = null;
 
-  public DupleData relType(String relType) {
+  public DupleData relType(RelTypeEnum relType) {
     this.relType = relType;
     return this;
   }
@@ -51,11 +114,11 @@ public class DupleData implements Serializable {
    * @return relType
   **/
   @ApiModelProperty(required = true, value = "Indicates the relationship between the pair of cards (from > rel_type > to)")
-  public String getRelType() {
+  public RelTypeEnum getRelType() {
     return relType;
   }
 
-  public void setRelType(String relType) {
+  public void setRelType(RelTypeEnum relType) {
     this.relType = relType;
   }
 
