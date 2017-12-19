@@ -21,8 +21,8 @@ import com.touchvie.sdk.Configuration;
 import com.touchvie.sdk.Pair;
 import com.touchvie.sdk.ProgressRequestBody;
 import com.touchvie.sdk.ProgressResponseBody;
-import com.touchvie.sdk.interfaces.DefaultApiInterface;
 import com.google.gson.reflect.TypeToken;
+import com.touchvie.sdk.api.InterfaceApi;
 
 import java.io.IOException;
 
@@ -40,7 +40,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DefaultApi implements DefaultApiInterface {
+public class DefaultApi implements InterfaceApi {
     private ApiClient apiClient;
 
     public DefaultApi() {

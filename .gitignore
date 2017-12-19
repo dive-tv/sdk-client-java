@@ -23,9 +23,3 @@ build
 \.classpath
 
 \.project
-
-\.idea/gradle\.xml
-
-\.idea/libraries/
-
-\.idea/
