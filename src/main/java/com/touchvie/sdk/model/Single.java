@@ -77,7 +77,23 @@ public class Single extends RelationModule implements Serializable {
     
     DIRECTORS("directors"),
     
-    IS_CHAPTER_OF("is_chapter_of");
+    IS_CHAPTER_OF("is_chapter_of"),
+    
+    COMPOSED_OF("composed_of"),
+    
+    OWNS("owns"),
+    
+    BELONGS_TO("belongs_to"),
+    
+    FILMED_IN("filmed_in"),
+    
+    REPRESENTS("represents"),
+    
+    WORN_BY("worn_by"),
+    
+    PLAYS("plays"),
+    
+    PLAYED_BY("played_by");
 
     private String value;
 
