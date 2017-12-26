@@ -53,9 +53,7 @@ public class Duple extends RelationModule implements Serializable {
     
     PLAYED_BY("played_by"),
     
-    FEATURED_IN("featured_in"),
-    
-    TEST("test");
+    FEATURED_IN("featured_in");
 
     private String value;
 
