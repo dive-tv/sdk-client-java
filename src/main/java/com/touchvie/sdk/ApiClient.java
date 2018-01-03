@@ -742,6 +742,51 @@ public class ApiClient {
         return params;
     }
 
+    /*
+    * Format {@code Object} to path parameters string.
+    * @param collectionFormat Collection format
+    * @param value Value
+    * @return String path parameter value
+    */
+    public String parameterToList(String collectionFormat, Object value){
+
+        // preconditions
+        if (value == null)
+        return new String();
+
+        Collection<?> valueCollection;
+        if (value instanceof Collection<?>) {
+            valueCollection = (Collection<?>) value;
+
+            if (valueCollection.isEmpty())
+                return new String();
+
+            // get the collection format
+            String format = (collectionFormat == null || collectionFormat.isEmpty() ? "csv" : collectionFormat); // default: csv
+            String delimiter = ",";
+            if ("csv".equals(format)) {
+                delimiter = ",";
+            } else if ("ssv".equals(format)) {
+                delimiter = " ";
+            } else if ("tsv".equals(format)) {
+                delimiter = "\t";
+            } else if ("pipes".equals(format)) {
+                delimiter = "|";
+            }
+
+            StringBuilder sb = new StringBuilder() ;
+            for (Object item : valueCollection) {
+                sb.append(delimiter);
+                sb.append(escapeString(parameterToString(item)));
+            }
+
+            return sb.substring(1);
+
+        } else {
+            return escapeString(parameterToString(value));
+        }
+    }
+
     /**
      * Sanitize filename by removing path.
      * e.g. ../../sun.gif becomes sun.gif

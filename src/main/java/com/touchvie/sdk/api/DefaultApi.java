@@ -74,7 +74,7 @@ public class DefaultApi implements InterfaceApi {
         
         // create path and map variables
         String localVarPath = "/likes/{card_id}"
-            .replaceAll("\\{" + "card_id" + "\\}", apiClient.escapeString(cardId.toString()));
+            .replaceAll("\\{" + "card_id" + "\\}", apiClient.parameterToList("", cardId));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -216,7 +216,7 @@ public class DefaultApi implements InterfaceApi {
         
         // create path and map variables
         String localVarPath = "/cards/{card_id}"
-            .replaceAll("\\{" + "card_id" + "\\}", apiClient.escapeString(cardId.toString()));
+            .replaceAll("\\{" + "card_id" + "\\}", apiClient.parameterToList("", cardId));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (products != null)
@@ -379,8 +379,8 @@ public class DefaultApi implements InterfaceApi {
         
         // create path and map variables
         String localVarPath = "/cards/{card_id}/versions/{version}"
-            .replaceAll("\\{" + "card_id" + "\\}", apiClient.escapeString(cardId.toString()))
-            .replaceAll("\\{" + "version" + "\\}", apiClient.escapeString(version.toString()));
+            .replaceAll("\\{" + "card_id" + "\\}", apiClient.parameterToList("", cardId))
+            .replaceAll("\\{" + "version" + "\\}", apiClient.parameterToList("", version));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (products != null)
@@ -552,7 +552,7 @@ public class DefaultApi implements InterfaceApi {
         
         // create path and map variables
         String localVarPath = "/movies/{client_movie_id}"
-            .replaceAll("\\{" + "client_movie_id" + "\\}", apiClient.escapeString(clientMovieId.toString()));
+            .replaceAll("\\{" + "client_movie_id" + "\\}", apiClient.parameterToList("", clientMovieId));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (imageSize != null)
@@ -701,7 +701,7 @@ public class DefaultApi implements InterfaceApi {
         
         // create path and map variables
         String localVarPath = "/channels/{channel_id}/grid"
-            .replaceAll("\\{" + "channel_id" + "\\}", apiClient.escapeString(channelId.toString()));
+            .replaceAll("\\{" + "channel_id" + "\\}", apiClient.parameterToList("", channelId));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (imageSize != null)
@@ -850,7 +850,7 @@ public class DefaultApi implements InterfaceApi {
         
         // create path and map variables
         String localVarPath = "/channels/{channel_id}"
-            .replaceAll("\\{" + "channel_id" + "\\}", apiClient.escapeString(channelId.toString()));
+            .replaceAll("\\{" + "channel_id" + "\\}", apiClient.parameterToList("", channelId));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (imageSize != null)
@@ -1149,7 +1149,7 @@ public class DefaultApi implements InterfaceApi {
         
         // create path and map variables
         String localVarPath = "/channels/{channel_id_list}/ready"
-            .replaceAll("\\{" + "channel_id_list" + "\\}", apiClient.escapeString(channelIdList.toString()));
+            .replaceAll("\\{" + "channel_id_list" + "\\}", apiClient.parameterToList("csv", channelIdList));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -1292,7 +1292,7 @@ public class DefaultApi implements InterfaceApi {
         
         // create path and map variables
         String localVarPath = "/movies/{client_movie_id_list}/ready"
-            .replaceAll("\\{" + "client_movie_id_list" + "\\}", apiClient.escapeString(clientMovieIdList.toString()));
+            .replaceAll("\\{" + "client_movie_id_list" + "\\}", apiClient.parameterToList("csv", clientMovieIdList));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -1437,7 +1437,7 @@ public class DefaultApi implements InterfaceApi {
         
         // create path and map variables
         String localVarPath = "/channels/{channel_id}/static"
-            .replaceAll("\\{" + "channel_id" + "\\}", apiClient.escapeString(channelId.toString()));
+            .replaceAll("\\{" + "channel_id" + "\\}", apiClient.parameterToList("", channelId));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (relations != null)
@@ -1506,7 +1506,7 @@ public class DefaultApi implements InterfaceApi {
 
     /**
      * Static channel scene
-     * Retrieves the list of cards related to the content currently being broadcasted in the provided channel
+     * Retrieves the list of cards related to the content currently being broadcasted in the given channel
      * @param authorization Authorization token (&#39;Bearer &lt;token&gt;&#39;) (required)
      * @param channelId Client channel ID (required)
      * @param acceptLanguage Client locale, as language-country (optional)
@@ -1522,7 +1522,7 @@ public class DefaultApi implements InterfaceApi {
 
     /**
      * Static channel scene
-     * Retrieves the list of cards related to the content currently being broadcasted in the provided channel
+     * Retrieves the list of cards related to the content currently being broadcasted in the given channel
      * @param authorization Authorization token (&#39;Bearer &lt;token&gt;&#39;) (required)
      * @param channelId Client channel ID (required)
      * @param acceptLanguage Client locale, as language-country (optional)
@@ -1539,7 +1539,7 @@ public class DefaultApi implements InterfaceApi {
 
     /**
      * Static channel scene (asynchronously)
-     * Retrieves the list of cards related to the content currently being broadcasted in the provided channel
+     * Retrieves the list of cards related to the content currently being broadcasted in the given channel
      * @param authorization Authorization token (&#39;Bearer &lt;token&gt;&#39;) (required)
      * @param channelId Client channel ID (required)
      * @param acceptLanguage Client locale, as language-country (optional)
@@ -1593,8 +1593,8 @@ public class DefaultApi implements InterfaceApi {
         
         // create path and map variables
         String localVarPath = "/movies/{client_movie_id}/static/{timestamp}"
-            .replaceAll("\\{" + "client_movie_id" + "\\}", apiClient.escapeString(clientMovieId.toString()))
-            .replaceAll("\\{" + "timestamp" + "\\}", apiClient.escapeString(timestamp.toString()));
+            .replaceAll("\\{" + "client_movie_id" + "\\}", apiClient.parameterToList("", clientMovieId))
+            .replaceAll("\\{" + "timestamp" + "\\}", apiClient.parameterToList("", timestamp));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (relations != null)
@@ -1755,7 +1755,7 @@ public class DefaultApi implements InterfaceApi {
         
         // create path and map variables
         String localVarPath = "/likes/{card_id}"
-            .replaceAll("\\{" + "card_id" + "\\}", apiClient.escapeString(cardId.toString()));
+            .replaceAll("\\{" + "card_id" + "\\}", apiClient.parameterToList("", cardId));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 

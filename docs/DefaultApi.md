@@ -491,7 +491,7 @@ No authorization required
 
 Static channel scene
 
-Retrieves the list of cards related to the content currently being broadcasted in the provided channel
+Retrieves the list of cards related to the content currently being broadcasted in the given channel
 
 ### Example
 ```java
