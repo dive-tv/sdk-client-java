@@ -4,24 +4,24 @@ All URIs are relative to *https://rest.dive.tv/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteLikes**](DefaultApi.md#deleteLikes) | **DELETE** likes/{card_id} | Delete card like
-[**getCard**](DefaultApi.md#getCard) | **GET** cards/{card_id} | Full card detail
-[**getCardVersion**](DefaultApi.md#getCardVersion) | **GET** cards/{card_id}/versions/{version} | Full card detail with version
-[**getCatalogMovie**](DefaultApi.md#getCatalogMovie) | **GET** movies/{client_movie_id} | Movie catalog info
-[**getChannelGrid**](DefaultApi.md#getChannelGrid) | **GET** channels/{channel_id}/grid | Channel events grid
-[**getChannelMovie**](DefaultApi.md#getChannelMovie) | **GET** channels/{channel_id} | Channel movie catalog info
-[**getLikes**](DefaultApi.md#getLikes) | **GET** likes | Get card likes
-[**getReadyChannels**](DefaultApi.md#getReadyChannels) | **GET** channels/{channel_id_list}/ready | Channel sync availability
-[**getReadyMovies**](DefaultApi.md#getReadyMovies) | **GET** movies/{client_movie_id_list}/ready | Movie sync availability
-[**getStaticChannelScene**](DefaultApi.md#getStaticChannelScene) | **GET** channels/{channel_id}/static | Static channel scene
-[**getStaticMovieScene**](DefaultApi.md#getStaticMovieScene) | **GET** movies/{client_movie_id}/static/{timestamp} | Static VOD scene
-[**postLikes**](DefaultApi.md#postLikes) | **POST** likes/{card_id} | Add card like
-[**postToken**](DefaultApi.md#postToken) | **POST** token | Token endpoint
+[**deleteLikes**](DefaultApi.md#deleteLikes) | **DELETE** /likes/{card_id} | Delete card like
+[**getCard**](DefaultApi.md#getCard) | **GET** /cards/{card_id} | Full card detail
+[**getCardVersion**](DefaultApi.md#getCardVersion) | **GET** /cards/{card_id}/versions/{version} | Full card detail with version
+[**getCatalogMovie**](DefaultApi.md#getCatalogMovie) | **GET** /movies/{client_movie_id} | Movie catalog info
+[**getChannelGrid**](DefaultApi.md#getChannelGrid) | **GET** /channels/{channel_id}/grid | Channel events grid
+[**getChannelMovie**](DefaultApi.md#getChannelMovie) | **GET** /channels/{channel_id} | Channel movie catalog info
+[**getLikes**](DefaultApi.md#getLikes) | **GET** /likes | Get card likes
+[**getReadyChannels**](DefaultApi.md#getReadyChannels) | **GET** /channels/{channel_id_list}/ready | Channel sync availability
+[**getReadyMovies**](DefaultApi.md#getReadyMovies) | **GET** /movies/{client_movie_id_list}/ready | Movie sync availability
+[**getStaticChannelScene**](DefaultApi.md#getStaticChannelScene) | **GET** /channels/{channel_id}/static | Static channel scene
+[**getStaticMovieScene**](DefaultApi.md#getStaticMovieScene) | **GET** /movies/{client_movie_id}/static/{timestamp} | Static VOD scene
+[**postLikes**](DefaultApi.md#postLikes) | **POST** /likes/{card_id} | Add card like
+[**postToken**](DefaultApi.md#postToken) | **POST** /token | Token endpoint
 
 
 <a name="deleteLikes"></a>
 # **deleteLikes**
-> Void deleteLikes(authorization, cardId, acceptLanguage)
+> deleteLikes(authorization, cardId, acceptLanguage)
 
 Delete card like
 
@@ -39,8 +39,7 @@ String authorization = "authorization_example"; // String | Authorization token 
 String cardId = "cardId_example"; // String | Requested card ID
 String acceptLanguage = "acceptLanguage_example"; // String | Client locale, as language-country
 try {
-    Void result = apiInstance.deleteLikes(authorization, cardId, acceptLanguage);
-    System.out.println(result);
+    apiInstance.deleteLikes(authorization, cardId, acceptLanguage);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#deleteLikes");
     e.printStackTrace();
@@ -57,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Void**](.md)
+null (empty response body)
 
 ### Authorization
 
@@ -596,7 +595,7 @@ No authorization required
 
 <a name="postLikes"></a>
 # **postLikes**
-> Void postLikes(authorization, cardId, acceptLanguage)
+> postLikes(authorization, cardId, acceptLanguage)
 
 Add card like
 
@@ -614,8 +613,7 @@ String authorization = "authorization_example"; // String | Authorization token 
 String cardId = "cardId_example"; // String | Requested card ID
 String acceptLanguage = "acceptLanguage_example"; // String | Client locale, as language-country
 try {
-    Void result = apiInstance.postLikes(authorization, cardId, acceptLanguage);
-    System.out.println(result);
+    apiInstance.postLikes(authorization, cardId, acceptLanguage);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#postLikes");
     e.printStackTrace();
@@ -632,7 +630,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Void**](.md)
+null (empty response body)
 
 ### Authorization
 
