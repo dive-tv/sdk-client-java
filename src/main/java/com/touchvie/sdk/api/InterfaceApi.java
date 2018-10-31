@@ -33,18 +33,18 @@ import java.util.Map;
  
 public interface InterfaceApi { 
  
-    public okhttp3.Call deleteLikesAsync(String authorization, String cardId, String acceptLanguage, final ApiCallback<Void> callback) throws ApiException;
-    public okhttp3.Call getCardAsync(String authorization, String cardId, String acceptLanguage, Boolean products, Boolean userData, String imageSize, final ApiCallback<Card> callback) throws ApiException;
-    public okhttp3.Call getCardVersionAsync(String authorization, String cardId, String version, String acceptLanguage, Boolean products, Boolean userData, Boolean relations, String imageSize, final ApiCallback<Card> callback) throws ApiException;
-    public okhttp3.Call getCatalogMovieAsync(String authorization, String clientMovieId, String acceptLanguage, String imageSize, final ApiCallback<Card> callback) throws ApiException;
-    public okhttp3.Call getChannelGridAsync(String authorization, String channelId, String acceptLanguage, String imageSize, final ApiCallback<TvGrid> callback) throws ApiException;
-    public okhttp3.Call getChannelMovieAsync(String authorization, String channelId, String acceptLanguage, String imageSize, final ApiCallback<Card> callback) throws ApiException;
-    public okhttp3.Call getLikesAsync(String authorization, String acceptLanguage, String imageSize, String paginateKey, String size, final ApiCallback<List<Card>> callback) throws ApiException;
-    public okhttp3.Call getReadyChannelsAsync(String authorization, List<String> channelIdList, String acceptLanguage, final ApiCallback<List<ChannelStatus>> callback) throws ApiException;
-    public okhttp3.Call getReadyMoviesAsync(String authorization, List<String> clientMovieIdList, String acceptLanguage, final ApiCallback<List<MovieStatus>> callback) throws ApiException;
-    public okhttp3.Call getStaticChannelSceneAsync(String authorization, String channelId, String acceptLanguage, Boolean relations, String imageSize, final ApiCallback<List<Card>> callback) throws ApiException;
-    public okhttp3.Call getStaticMovieSceneAsync(String authorization, String clientMovieId, Float timestamp, String acceptLanguage, Boolean relations, String imageSize, final ApiCallback<List<Card>> callback) throws ApiException;
-    public okhttp3.Call postLikesAsync(String authorization, String cardId, String acceptLanguage, final ApiCallback<Void> callback) throws ApiException;
+    public com.squareup.okhttp.Call deleteLikesAsync(String authorization, String cardId, String acceptLanguage, final ApiCallback<Void> callback) throws ApiException;
+    public com.squareup.okhttp.Call getCardAsync(String authorization, String cardId, String acceptLanguage, Boolean products, Boolean userData, String imageSize, final ApiCallback<Card> callback) throws ApiException;
+    public com.squareup.okhttp.Call getCardVersionAsync(String authorization, String cardId, String version, String acceptLanguage, Boolean products, Boolean userData, Boolean relations, String imageSize, final ApiCallback<Card> callback) throws ApiException;
+    public com.squareup.okhttp.Call getCatalogMovieAsync(String authorization, String clientMovieId, String acceptLanguage, String imageSize, final ApiCallback<Card> callback) throws ApiException;
+    public com.squareup.okhttp.Call getChannelGridAsync(String authorization, String channelId, String acceptLanguage, String imageSize, final ApiCallback<TvGrid> callback) throws ApiException;
+    public com.squareup.okhttp.Call getChannelMovieAsync(String authorization, String channelId, String acceptLanguage, String imageSize, final ApiCallback<Card> callback) throws ApiException;
+    public com.squareup.okhttp.Call getLikesAsync(String authorization, String acceptLanguage, String imageSize, String paginateKey, String size, final ApiCallback<List<Card>> callback) throws ApiException;
+    public com.squareup.okhttp.Call getReadyChannelsAsync(String authorization, List<String> channelIdList, String acceptLanguage, final ApiCallback<List<ChannelStatus>> callback) throws ApiException;
+    public com.squareup.okhttp.Call getReadyMoviesAsync(String authorization, List<String> clientMovieIdList, String acceptLanguage, final ApiCallback<List<MovieStatus>> callback) throws ApiException;
+    public com.squareup.okhttp.Call getStaticChannelSceneAsync(String authorization, String channelId, String acceptLanguage, Boolean relations, String imageSize, final ApiCallback<List<Card>> callback) throws ApiException;
+    public com.squareup.okhttp.Call getStaticMovieSceneAsync(String authorization, String clientMovieId, Float timestamp, String acceptLanguage, Boolean relations, String imageSize, final ApiCallback<List<Card>> callback) throws ApiException;
+    public com.squareup.okhttp.Call postLikesAsync(String authorization, String cardId, String acceptLanguage, final ApiCallback<Void> callback) throws ApiException;
     
  
 } 

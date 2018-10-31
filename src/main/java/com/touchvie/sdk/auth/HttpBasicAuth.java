@@ -15,7 +15,7 @@ package com.touchvie.sdk.auth;
 
 import com.touchvie.sdk.Pair;
 
-import okhttp3.Credentials;
+import com.squareup.okhttp.Credentials;
 
 import java.util.Map;
 import java.util.List;
