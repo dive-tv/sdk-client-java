@@ -75,7 +75,8 @@ if(hasProperty('target') && target == 'android') {
 
 } else {
 
-    apply plugin: 'java'
+    //apply plugin: 'java'
+    apply plugin: 'java-library'
     apply plugin: 'maven'
 
     sourceCompatibility = JavaVersion.VERSION_1_7
@@ -94,7 +95,8 @@ if(hasProperty('target') && target == 'android') {
 }
 
 dependencies {
-    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+    //implementation 'io.swagger:swagger-annotations:1.5.15'
+    //implementation 'com.squareup.okhttp3:okhttp:3.9.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
     implementation 'com.google.code.gson:gson:2.8.1'
     implementation 'joda-time:joda-time:2.9.9'
