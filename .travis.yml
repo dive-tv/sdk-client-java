@@ -4,11 +4,15 @@
 language: java
 jdk:
   - oraclejdk8
-  
+
+addons:
+  apt:
+    packages:
+    - python3
+
 before_install:
   # ensure gradlew has proper permission
   - chmod a+x ./gradlew
-  
 script:
   # test using maven
   - mvn test

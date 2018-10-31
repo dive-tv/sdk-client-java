@@ -13,8 +13,8 @@
 
 package com.touchvie.sdk;
 
-import okhttp3.MediaType;
-import okhttp3.ResponseBody;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
 
@@ -45,12 +45,12 @@ public class ProgressResponseBody extends ResponseBody {
     }
 
     @Override
-    public long contentLength() {
+    public long contentLength() throws IOException {
         return responseBody.contentLength();
     }
 
     @Override
-    public BufferedSource source() {
+    public BufferedSource source() throws IOException {
         if (bufferedSource == null) {
             bufferedSource = Okio.buffer(source(responseBody.source()));
         }

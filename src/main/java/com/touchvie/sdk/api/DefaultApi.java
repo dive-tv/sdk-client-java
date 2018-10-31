@@ -69,7 +69,7 @@ public class DefaultApi implements InterfaceApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteLikesCall(String authorization, String cardId, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteLikesCall(String authorization, String cardId, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -99,10 +99,10 @@ public class DefaultApi implements InterfaceApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -115,7 +115,7 @@ public class DefaultApi implements InterfaceApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteLikesValidateBeforeCall(String authorization, String cardId, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteLikesValidateBeforeCall(String authorization, String cardId, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -128,7 +128,7 @@ public class DefaultApi implements InterfaceApi {
         }
         
         
-        okhttp3.Call call = deleteLikesCall(authorization, cardId, acceptLanguage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteLikesCall(authorization, cardId, acceptLanguage, progressListener, progressRequestListener);
         return call;
 
         
@@ -159,7 +159,7 @@ public class DefaultApi implements InterfaceApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<Void> deleteLikesWithHttpInfo(String authorization, String cardId, String acceptLanguage) throws ApiException {
-        okhttp3.Call call = deleteLikesValidateBeforeCall(authorization, cardId, acceptLanguage, null, null);
+        com.squareup.okhttp.Call call = deleteLikesValidateBeforeCall(authorization, cardId, acceptLanguage, null, null);
         return apiClient.execute(call);
     }
 
@@ -173,7 +173,7 @@ public class DefaultApi implements InterfaceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteLikesAsync(String authorization, String cardId, String acceptLanguage, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteLikesAsync(String authorization, String cardId, String acceptLanguage, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -194,7 +194,7 @@ public class DefaultApi implements InterfaceApi {
             };
         }
 
-        okhttp3.Call call = deleteLikesValidateBeforeCall(authorization, cardId, acceptLanguage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteLikesValidateBeforeCall(authorization, cardId, acceptLanguage, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -211,7 +211,7 @@ public class DefaultApi implements InterfaceApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getCardCall(String authorization, String cardId, String acceptLanguage, Boolean products, Boolean userData, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCardCall(String authorization, String cardId, String acceptLanguage, Boolean products, Boolean userData, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -247,10 +247,10 @@ public class DefaultApi implements InterfaceApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -263,7 +263,7 @@ public class DefaultApi implements InterfaceApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCardValidateBeforeCall(String authorization, String cardId, String acceptLanguage, Boolean products, Boolean userData, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCardValidateBeforeCall(String authorization, String cardId, String acceptLanguage, Boolean products, Boolean userData, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -276,7 +276,7 @@ public class DefaultApi implements InterfaceApi {
         }
         
         
-        okhttp3.Call call = getCardCall(authorization, cardId, acceptLanguage, products, userData, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCardCall(authorization, cardId, acceptLanguage, products, userData, imageSize, progressListener, progressRequestListener);
         return call;
 
         
@@ -315,7 +315,7 @@ public class DefaultApi implements InterfaceApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<Card> getCardWithHttpInfo(String authorization, String cardId, String acceptLanguage, Boolean products, Boolean userData, String imageSize) throws ApiException {
-        okhttp3.Call call = getCardValidateBeforeCall(authorization, cardId, acceptLanguage, products, userData, imageSize, null, null);
+        com.squareup.okhttp.Call call = getCardValidateBeforeCall(authorization, cardId, acceptLanguage, products, userData, imageSize, null, null);
         Type localVarReturnType = new TypeToken<Card>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -333,7 +333,7 @@ public class DefaultApi implements InterfaceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getCardAsync(String authorization, String cardId, String acceptLanguage, Boolean products, Boolean userData, String imageSize, final ApiCallback<Card> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCardAsync(String authorization, String cardId, String acceptLanguage, Boolean products, Boolean userData, String imageSize, final ApiCallback<Card> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -354,7 +354,7 @@ public class DefaultApi implements InterfaceApi {
             };
         }
 
-        okhttp3.Call call = getCardValidateBeforeCall(authorization, cardId, acceptLanguage, products, userData, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCardValidateBeforeCall(authorization, cardId, acceptLanguage, products, userData, imageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Card>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -374,7 +374,7 @@ public class DefaultApi implements InterfaceApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getCardVersionCall(String authorization, String cardId, String version, String acceptLanguage, Boolean products, Boolean userData, Boolean relations, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCardVersionCall(String authorization, String cardId, String version, String acceptLanguage, Boolean products, Boolean userData, Boolean relations, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -413,10 +413,10 @@ public class DefaultApi implements InterfaceApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -429,7 +429,7 @@ public class DefaultApi implements InterfaceApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCardVersionValidateBeforeCall(String authorization, String cardId, String version, String acceptLanguage, Boolean products, Boolean userData, Boolean relations, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCardVersionValidateBeforeCall(String authorization, String cardId, String version, String acceptLanguage, Boolean products, Boolean userData, Boolean relations, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -447,7 +447,7 @@ public class DefaultApi implements InterfaceApi {
         }
         
         
-        okhttp3.Call call = getCardVersionCall(authorization, cardId, version, acceptLanguage, products, userData, relations, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCardVersionCall(authorization, cardId, version, acceptLanguage, products, userData, relations, imageSize, progressListener, progressRequestListener);
         return call;
 
         
@@ -490,7 +490,7 @@ public class DefaultApi implements InterfaceApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<Card> getCardVersionWithHttpInfo(String authorization, String cardId, String version, String acceptLanguage, Boolean products, Boolean userData, Boolean relations, String imageSize) throws ApiException {
-        okhttp3.Call call = getCardVersionValidateBeforeCall(authorization, cardId, version, acceptLanguage, products, userData, relations, imageSize, null, null);
+        com.squareup.okhttp.Call call = getCardVersionValidateBeforeCall(authorization, cardId, version, acceptLanguage, products, userData, relations, imageSize, null, null);
         Type localVarReturnType = new TypeToken<Card>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -510,7 +510,7 @@ public class DefaultApi implements InterfaceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getCardVersionAsync(String authorization, String cardId, String version, String acceptLanguage, Boolean products, Boolean userData, Boolean relations, String imageSize, final ApiCallback<Card> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCardVersionAsync(String authorization, String cardId, String version, String acceptLanguage, Boolean products, Boolean userData, Boolean relations, String imageSize, final ApiCallback<Card> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -531,7 +531,7 @@ public class DefaultApi implements InterfaceApi {
             };
         }
 
-        okhttp3.Call call = getCardVersionValidateBeforeCall(authorization, cardId, version, acceptLanguage, products, userData, relations, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCardVersionValidateBeforeCall(authorization, cardId, version, acceptLanguage, products, userData, relations, imageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Card>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -547,7 +547,7 @@ public class DefaultApi implements InterfaceApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getCatalogMovieCall(String authorization, String clientMovieId, String acceptLanguage, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCatalogMovieCall(String authorization, String clientMovieId, String acceptLanguage, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -579,10 +579,10 @@ public class DefaultApi implements InterfaceApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -595,7 +595,7 @@ public class DefaultApi implements InterfaceApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCatalogMovieValidateBeforeCall(String authorization, String clientMovieId, String acceptLanguage, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCatalogMovieValidateBeforeCall(String authorization, String clientMovieId, String acceptLanguage, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -608,7 +608,7 @@ public class DefaultApi implements InterfaceApi {
         }
         
         
-        okhttp3.Call call = getCatalogMovieCall(authorization, clientMovieId, acceptLanguage, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCatalogMovieCall(authorization, clientMovieId, acceptLanguage, imageSize, progressListener, progressRequestListener);
         return call;
 
         
@@ -643,7 +643,7 @@ public class DefaultApi implements InterfaceApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<Card> getCatalogMovieWithHttpInfo(String authorization, String clientMovieId, String acceptLanguage, String imageSize) throws ApiException {
-        okhttp3.Call call = getCatalogMovieValidateBeforeCall(authorization, clientMovieId, acceptLanguage, imageSize, null, null);
+        com.squareup.okhttp.Call call = getCatalogMovieValidateBeforeCall(authorization, clientMovieId, acceptLanguage, imageSize, null, null);
         Type localVarReturnType = new TypeToken<Card>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -659,7 +659,7 @@ public class DefaultApi implements InterfaceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getCatalogMovieAsync(String authorization, String clientMovieId, String acceptLanguage, String imageSize, final ApiCallback<Card> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCatalogMovieAsync(String authorization, String clientMovieId, String acceptLanguage, String imageSize, final ApiCallback<Card> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -680,7 +680,7 @@ public class DefaultApi implements InterfaceApi {
             };
         }
 
-        okhttp3.Call call = getCatalogMovieValidateBeforeCall(authorization, clientMovieId, acceptLanguage, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCatalogMovieValidateBeforeCall(authorization, clientMovieId, acceptLanguage, imageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Card>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -696,7 +696,7 @@ public class DefaultApi implements InterfaceApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getChannelGridCall(String authorization, String channelId, String acceptLanguage, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getChannelGridCall(String authorization, String channelId, String acceptLanguage, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -728,10 +728,10 @@ public class DefaultApi implements InterfaceApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -744,7 +744,7 @@ public class DefaultApi implements InterfaceApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getChannelGridValidateBeforeCall(String authorization, String channelId, String acceptLanguage, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getChannelGridValidateBeforeCall(String authorization, String channelId, String acceptLanguage, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -757,7 +757,7 @@ public class DefaultApi implements InterfaceApi {
         }
         
         
-        okhttp3.Call call = getChannelGridCall(authorization, channelId, acceptLanguage, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getChannelGridCall(authorization, channelId, acceptLanguage, imageSize, progressListener, progressRequestListener);
         return call;
 
         
@@ -792,7 +792,7 @@ public class DefaultApi implements InterfaceApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<TvGrid> getChannelGridWithHttpInfo(String authorization, String channelId, String acceptLanguage, String imageSize) throws ApiException {
-        okhttp3.Call call = getChannelGridValidateBeforeCall(authorization, channelId, acceptLanguage, imageSize, null, null);
+        com.squareup.okhttp.Call call = getChannelGridValidateBeforeCall(authorization, channelId, acceptLanguage, imageSize, null, null);
         Type localVarReturnType = new TypeToken<TvGrid>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -808,7 +808,7 @@ public class DefaultApi implements InterfaceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getChannelGridAsync(String authorization, String channelId, String acceptLanguage, String imageSize, final ApiCallback<TvGrid> callback) throws ApiException {
+    public com.squareup.okhttp.Call getChannelGridAsync(String authorization, String channelId, String acceptLanguage, String imageSize, final ApiCallback<TvGrid> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -829,7 +829,7 @@ public class DefaultApi implements InterfaceApi {
             };
         }
 
-        okhttp3.Call call = getChannelGridValidateBeforeCall(authorization, channelId, acceptLanguage, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getChannelGridValidateBeforeCall(authorization, channelId, acceptLanguage, imageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<TvGrid>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -845,7 +845,7 @@ public class DefaultApi implements InterfaceApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getChannelMovieCall(String authorization, String channelId, String acceptLanguage, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getChannelMovieCall(String authorization, String channelId, String acceptLanguage, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -877,10 +877,10 @@ public class DefaultApi implements InterfaceApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -893,7 +893,7 @@ public class DefaultApi implements InterfaceApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getChannelMovieValidateBeforeCall(String authorization, String channelId, String acceptLanguage, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getChannelMovieValidateBeforeCall(String authorization, String channelId, String acceptLanguage, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -906,7 +906,7 @@ public class DefaultApi implements InterfaceApi {
         }
         
         
-        okhttp3.Call call = getChannelMovieCall(authorization, channelId, acceptLanguage, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getChannelMovieCall(authorization, channelId, acceptLanguage, imageSize, progressListener, progressRequestListener);
         return call;
 
         
@@ -941,7 +941,7 @@ public class DefaultApi implements InterfaceApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<Card> getChannelMovieWithHttpInfo(String authorization, String channelId, String acceptLanguage, String imageSize) throws ApiException {
-        okhttp3.Call call = getChannelMovieValidateBeforeCall(authorization, channelId, acceptLanguage, imageSize, null, null);
+        com.squareup.okhttp.Call call = getChannelMovieValidateBeforeCall(authorization, channelId, acceptLanguage, imageSize, null, null);
         Type localVarReturnType = new TypeToken<Card>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -957,7 +957,7 @@ public class DefaultApi implements InterfaceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getChannelMovieAsync(String authorization, String channelId, String acceptLanguage, String imageSize, final ApiCallback<Card> callback) throws ApiException {
+    public com.squareup.okhttp.Call getChannelMovieAsync(String authorization, String channelId, String acceptLanguage, String imageSize, final ApiCallback<Card> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -978,7 +978,7 @@ public class DefaultApi implements InterfaceApi {
             };
         }
 
-        okhttp3.Call call = getChannelMovieValidateBeforeCall(authorization, channelId, acceptLanguage, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getChannelMovieValidateBeforeCall(authorization, channelId, acceptLanguage, imageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Card>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -995,7 +995,7 @@ public class DefaultApi implements InterfaceApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getLikesCall(String authorization, String acceptLanguage, String imageSize, String paginateKey, String size, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getLikesCall(String authorization, String acceptLanguage, String imageSize, String paginateKey, String size, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -1030,10 +1030,10 @@ public class DefaultApi implements InterfaceApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -1046,7 +1046,7 @@ public class DefaultApi implements InterfaceApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLikesValidateBeforeCall(String authorization, String acceptLanguage, String imageSize, String paginateKey, String size, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getLikesValidateBeforeCall(String authorization, String acceptLanguage, String imageSize, String paginateKey, String size, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -1054,7 +1054,7 @@ public class DefaultApi implements InterfaceApi {
         }
         
         
-        okhttp3.Call call = getLikesCall(authorization, acceptLanguage, imageSize, paginateKey, size, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getLikesCall(authorization, acceptLanguage, imageSize, paginateKey, size, progressListener, progressRequestListener);
         return call;
 
         
@@ -1091,7 +1091,7 @@ public class DefaultApi implements InterfaceApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<Card>> getLikesWithHttpInfo(String authorization, String acceptLanguage, String imageSize, String paginateKey, String size) throws ApiException {
-        okhttp3.Call call = getLikesValidateBeforeCall(authorization, acceptLanguage, imageSize, paginateKey, size, null, null);
+        com.squareup.okhttp.Call call = getLikesValidateBeforeCall(authorization, acceptLanguage, imageSize, paginateKey, size, null, null);
         Type localVarReturnType = new TypeToken<List<Card>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1108,7 +1108,7 @@ public class DefaultApi implements InterfaceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getLikesAsync(String authorization, String acceptLanguage, String imageSize, String paginateKey, String size, final ApiCallback<List<Card>> callback) throws ApiException {
+    public com.squareup.okhttp.Call getLikesAsync(String authorization, String acceptLanguage, String imageSize, String paginateKey, String size, final ApiCallback<List<Card>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1129,7 +1129,7 @@ public class DefaultApi implements InterfaceApi {
             };
         }
 
-        okhttp3.Call call = getLikesValidateBeforeCall(authorization, acceptLanguage, imageSize, paginateKey, size, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getLikesValidateBeforeCall(authorization, acceptLanguage, imageSize, paginateKey, size, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<Card>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1144,7 +1144,7 @@ public class DefaultApi implements InterfaceApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getReadyChannelsCall(String authorization, List<String> channelIdList, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getReadyChannelsCall(String authorization, List<String> channelIdList, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -1174,10 +1174,10 @@ public class DefaultApi implements InterfaceApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -1190,7 +1190,7 @@ public class DefaultApi implements InterfaceApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getReadyChannelsValidateBeforeCall(String authorization, List<String> channelIdList, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getReadyChannelsValidateBeforeCall(String authorization, List<String> channelIdList, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -1203,7 +1203,7 @@ public class DefaultApi implements InterfaceApi {
         }
         
         
-        okhttp3.Call call = getReadyChannelsCall(authorization, channelIdList, acceptLanguage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getReadyChannelsCall(authorization, channelIdList, acceptLanguage, progressListener, progressRequestListener);
         return call;
 
         
@@ -1236,7 +1236,7 @@ public class DefaultApi implements InterfaceApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<ChannelStatus>> getReadyChannelsWithHttpInfo(String authorization, List<String> channelIdList, String acceptLanguage) throws ApiException {
-        okhttp3.Call call = getReadyChannelsValidateBeforeCall(authorization, channelIdList, acceptLanguage, null, null);
+        com.squareup.okhttp.Call call = getReadyChannelsValidateBeforeCall(authorization, channelIdList, acceptLanguage, null, null);
         Type localVarReturnType = new TypeToken<List<ChannelStatus>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1251,7 +1251,7 @@ public class DefaultApi implements InterfaceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getReadyChannelsAsync(String authorization, List<String> channelIdList, String acceptLanguage, final ApiCallback<List<ChannelStatus>> callback) throws ApiException {
+    public com.squareup.okhttp.Call getReadyChannelsAsync(String authorization, List<String> channelIdList, String acceptLanguage, final ApiCallback<List<ChannelStatus>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1272,7 +1272,7 @@ public class DefaultApi implements InterfaceApi {
             };
         }
 
-        okhttp3.Call call = getReadyChannelsValidateBeforeCall(authorization, channelIdList, acceptLanguage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getReadyChannelsValidateBeforeCall(authorization, channelIdList, acceptLanguage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<ChannelStatus>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1287,7 +1287,7 @@ public class DefaultApi implements InterfaceApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getReadyMoviesCall(String authorization, List<String> clientMovieIdList, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getReadyMoviesCall(String authorization, List<String> clientMovieIdList, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -1317,10 +1317,10 @@ public class DefaultApi implements InterfaceApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -1333,7 +1333,7 @@ public class DefaultApi implements InterfaceApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getReadyMoviesValidateBeforeCall(String authorization, List<String> clientMovieIdList, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getReadyMoviesValidateBeforeCall(String authorization, List<String> clientMovieIdList, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -1346,7 +1346,7 @@ public class DefaultApi implements InterfaceApi {
         }
         
         
-        okhttp3.Call call = getReadyMoviesCall(authorization, clientMovieIdList, acceptLanguage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getReadyMoviesCall(authorization, clientMovieIdList, acceptLanguage, progressListener, progressRequestListener);
         return call;
 
         
@@ -1379,7 +1379,7 @@ public class DefaultApi implements InterfaceApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<MovieStatus>> getReadyMoviesWithHttpInfo(String authorization, List<String> clientMovieIdList, String acceptLanguage) throws ApiException {
-        okhttp3.Call call = getReadyMoviesValidateBeforeCall(authorization, clientMovieIdList, acceptLanguage, null, null);
+        com.squareup.okhttp.Call call = getReadyMoviesValidateBeforeCall(authorization, clientMovieIdList, acceptLanguage, null, null);
         Type localVarReturnType = new TypeToken<List<MovieStatus>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1394,7 +1394,7 @@ public class DefaultApi implements InterfaceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getReadyMoviesAsync(String authorization, List<String> clientMovieIdList, String acceptLanguage, final ApiCallback<List<MovieStatus>> callback) throws ApiException {
+    public com.squareup.okhttp.Call getReadyMoviesAsync(String authorization, List<String> clientMovieIdList, String acceptLanguage, final ApiCallback<List<MovieStatus>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1415,7 +1415,7 @@ public class DefaultApi implements InterfaceApi {
             };
         }
 
-        okhttp3.Call call = getReadyMoviesValidateBeforeCall(authorization, clientMovieIdList, acceptLanguage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getReadyMoviesValidateBeforeCall(authorization, clientMovieIdList, acceptLanguage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<MovieStatus>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1432,7 +1432,7 @@ public class DefaultApi implements InterfaceApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getStaticChannelSceneCall(String authorization, String channelId, String acceptLanguage, Boolean relations, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getStaticChannelSceneCall(String authorization, String channelId, String acceptLanguage, Boolean relations, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -1466,10 +1466,10 @@ public class DefaultApi implements InterfaceApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -1482,7 +1482,7 @@ public class DefaultApi implements InterfaceApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getStaticChannelSceneValidateBeforeCall(String authorization, String channelId, String acceptLanguage, Boolean relations, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getStaticChannelSceneValidateBeforeCall(String authorization, String channelId, String acceptLanguage, Boolean relations, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -1495,7 +1495,7 @@ public class DefaultApi implements InterfaceApi {
         }
         
         
-        okhttp3.Call call = getStaticChannelSceneCall(authorization, channelId, acceptLanguage, relations, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStaticChannelSceneCall(authorization, channelId, acceptLanguage, relations, imageSize, progressListener, progressRequestListener);
         return call;
 
         
@@ -1532,7 +1532,7 @@ public class DefaultApi implements InterfaceApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<Card>> getStaticChannelSceneWithHttpInfo(String authorization, String channelId, String acceptLanguage, Boolean relations, String imageSize) throws ApiException {
-        okhttp3.Call call = getStaticChannelSceneValidateBeforeCall(authorization, channelId, acceptLanguage, relations, imageSize, null, null);
+        com.squareup.okhttp.Call call = getStaticChannelSceneValidateBeforeCall(authorization, channelId, acceptLanguage, relations, imageSize, null, null);
         Type localVarReturnType = new TypeToken<List<Card>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1549,7 +1549,7 @@ public class DefaultApi implements InterfaceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getStaticChannelSceneAsync(String authorization, String channelId, String acceptLanguage, Boolean relations, String imageSize, final ApiCallback<List<Card>> callback) throws ApiException {
+    public com.squareup.okhttp.Call getStaticChannelSceneAsync(String authorization, String channelId, String acceptLanguage, Boolean relations, String imageSize, final ApiCallback<List<Card>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1570,7 +1570,7 @@ public class DefaultApi implements InterfaceApi {
             };
         }
 
-        okhttp3.Call call = getStaticChannelSceneValidateBeforeCall(authorization, channelId, acceptLanguage, relations, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStaticChannelSceneValidateBeforeCall(authorization, channelId, acceptLanguage, relations, imageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<Card>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1588,7 +1588,7 @@ public class DefaultApi implements InterfaceApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getStaticMovieSceneCall(String authorization, String clientMovieId, Float timestamp, String acceptLanguage, Boolean relations, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getStaticMovieSceneCall(String authorization, String clientMovieId, Float timestamp, String acceptLanguage, Boolean relations, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -1623,10 +1623,10 @@ public class DefaultApi implements InterfaceApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -1639,7 +1639,7 @@ public class DefaultApi implements InterfaceApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getStaticMovieSceneValidateBeforeCall(String authorization, String clientMovieId, Float timestamp, String acceptLanguage, Boolean relations, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getStaticMovieSceneValidateBeforeCall(String authorization, String clientMovieId, Float timestamp, String acceptLanguage, Boolean relations, String imageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -1657,7 +1657,7 @@ public class DefaultApi implements InterfaceApi {
         }
         
         
-        okhttp3.Call call = getStaticMovieSceneCall(authorization, clientMovieId, timestamp, acceptLanguage, relations, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStaticMovieSceneCall(authorization, clientMovieId, timestamp, acceptLanguage, relations, imageSize, progressListener, progressRequestListener);
         return call;
 
         
@@ -1696,7 +1696,7 @@ public class DefaultApi implements InterfaceApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<List<Card>> getStaticMovieSceneWithHttpInfo(String authorization, String clientMovieId, Float timestamp, String acceptLanguage, Boolean relations, String imageSize) throws ApiException {
-        okhttp3.Call call = getStaticMovieSceneValidateBeforeCall(authorization, clientMovieId, timestamp, acceptLanguage, relations, imageSize, null, null);
+        com.squareup.okhttp.Call call = getStaticMovieSceneValidateBeforeCall(authorization, clientMovieId, timestamp, acceptLanguage, relations, imageSize, null, null);
         Type localVarReturnType = new TypeToken<List<Card>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1714,7 +1714,7 @@ public class DefaultApi implements InterfaceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getStaticMovieSceneAsync(String authorization, String clientMovieId, Float timestamp, String acceptLanguage, Boolean relations, String imageSize, final ApiCallback<List<Card>> callback) throws ApiException {
+    public com.squareup.okhttp.Call getStaticMovieSceneAsync(String authorization, String clientMovieId, Float timestamp, String acceptLanguage, Boolean relations, String imageSize, final ApiCallback<List<Card>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1735,7 +1735,7 @@ public class DefaultApi implements InterfaceApi {
             };
         }
 
-        okhttp3.Call call = getStaticMovieSceneValidateBeforeCall(authorization, clientMovieId, timestamp, acceptLanguage, relations, imageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStaticMovieSceneValidateBeforeCall(authorization, clientMovieId, timestamp, acceptLanguage, relations, imageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<Card>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1750,7 +1750,7 @@ public class DefaultApi implements InterfaceApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postLikesCall(String authorization, String cardId, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call postLikesCall(String authorization, String cardId, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -1780,10 +1780,10 @@ public class DefaultApi implements InterfaceApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -1796,7 +1796,7 @@ public class DefaultApi implements InterfaceApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postLikesValidateBeforeCall(String authorization, String cardId, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call postLikesValidateBeforeCall(String authorization, String cardId, String acceptLanguage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -1809,7 +1809,7 @@ public class DefaultApi implements InterfaceApi {
         }
         
         
-        okhttp3.Call call = postLikesCall(authorization, cardId, acceptLanguage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postLikesCall(authorization, cardId, acceptLanguage, progressListener, progressRequestListener);
         return call;
 
         
@@ -1840,7 +1840,7 @@ public class DefaultApi implements InterfaceApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<Void> postLikesWithHttpInfo(String authorization, String cardId, String acceptLanguage) throws ApiException {
-        okhttp3.Call call = postLikesValidateBeforeCall(authorization, cardId, acceptLanguage, null, null);
+        com.squareup.okhttp.Call call = postLikesValidateBeforeCall(authorization, cardId, acceptLanguage, null, null);
         return apiClient.execute(call);
     }
 
@@ -1854,7 +1854,7 @@ public class DefaultApi implements InterfaceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postLikesAsync(String authorization, String cardId, String acceptLanguage, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call postLikesAsync(String authorization, String cardId, String acceptLanguage, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1875,7 +1875,7 @@ public class DefaultApi implements InterfaceApi {
             };
         }
 
-        okhttp3.Call call = postLikesValidateBeforeCall(authorization, cardId, acceptLanguage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postLikesValidateBeforeCall(authorization, cardId, acceptLanguage, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
@@ -1891,7 +1891,7 @@ public class DefaultApi implements InterfaceApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postTokenCall(String authorization, String grantType, String acceptLanguage, String deviceId, String refreshToken, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call postTokenCall(String authorization, String grantType, String acceptLanguage, String deviceId, String refreshToken, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -1926,10 +1926,10 @@ public class DefaultApi implements InterfaceApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new okhttp3.Interceptor() {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
-                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
                     .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                     .build();
@@ -1942,7 +1942,7 @@ public class DefaultApi implements InterfaceApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTokenValidateBeforeCall(String authorization, String grantType, String acceptLanguage, String deviceId, String refreshToken, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call postTokenValidateBeforeCall(String authorization, String grantType, String acceptLanguage, String deviceId, String refreshToken, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'authorization' is set
         if (authorization == null) {
@@ -1955,7 +1955,7 @@ public class DefaultApi implements InterfaceApi {
         }
         
         
-        okhttp3.Call call = postTokenCall(authorization, grantType, acceptLanguage, deviceId, refreshToken, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postTokenCall(authorization, grantType, acceptLanguage, deviceId, refreshToken, progressListener, progressRequestListener);
         return call;
 
         
@@ -1992,7 +1992,7 @@ public class DefaultApi implements InterfaceApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<AccessToken> postTokenWithHttpInfo(String authorization, String grantType, String acceptLanguage, String deviceId, String refreshToken) throws ApiException {
-        okhttp3.Call call = postTokenValidateBeforeCall(authorization, grantType, acceptLanguage, deviceId, refreshToken, null, null);
+        com.squareup.okhttp.Call call = postTokenValidateBeforeCall(authorization, grantType, acceptLanguage, deviceId, refreshToken, null, null);
         Type localVarReturnType = new TypeToken<AccessToken>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2009,7 +2009,7 @@ public class DefaultApi implements InterfaceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postTokenAsync(String authorization, String grantType, String acceptLanguage, String deviceId, String refreshToken, final ApiCallback<AccessToken> callback) throws ApiException {
+    public com.squareup.okhttp.Call postTokenAsync(String authorization, String grantType, String acceptLanguage, String deviceId, String refreshToken, final ApiCallback<AccessToken> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2030,7 +2030,7 @@ public class DefaultApi implements InterfaceApi {
             };
         }
 
-        okhttp3.Call call = postTokenValidateBeforeCall(authorization, grantType, acceptLanguage, deviceId, refreshToken, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = postTokenValidateBeforeCall(authorization, grantType, acceptLanguage, deviceId, refreshToken, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AccessToken>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

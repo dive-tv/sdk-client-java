@@ -13,7 +13,7 @@
 
 package com.touchvie.sdk;
 
-import okhttp3.*;
+import com.squareup.okhttp.*;
 import okio.Buffer;
 import okio.BufferedSink;
 import okio.GzipSink;

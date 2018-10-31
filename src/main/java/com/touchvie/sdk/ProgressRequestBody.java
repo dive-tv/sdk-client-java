@@ -13,8 +13,8 @@
 
 package com.touchvie.sdk;
 
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.RequestBody;
 
 import java.io.IOException;
 

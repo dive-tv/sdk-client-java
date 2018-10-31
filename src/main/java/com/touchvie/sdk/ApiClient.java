@@ -13,21 +13,19 @@
 
 package com.touchvie.sdk;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.RequestBody;
-//import okhttp3.FormEncodingBuilder;
-import okhttp3.FormBody;
-//import okhttp3.MultipartBuilder;
-import okhttp3.MultipartBody;
-import okhttp3.MediaType;
-import okhttp3.Headers;
-import okhttp3.internal.http.HttpMethod;
-import okhttp3.logging.HttpLoggingInterceptor;
-import okhttp3.logging.HttpLoggingInterceptor.Level;
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.MultipartBuilder;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.Headers;
+import com.squareup.okhttp.internal.http.HttpMethod;
+import com.squareup.okhttp.logging.HttpLoggingInterceptor;
+import com.squareup.okhttp.logging.HttpLoggingInterceptor.Level;
 
 import java.lang.reflect.Type;
 
@@ -643,8 +641,7 @@ public class ApiClient {
      * @return Timeout in milliseconds
      */
     public int getConnectTimeout() {
-        //return httpClient.getConnectTimeout();
-        return httpClient.connectTimeoutMillis();
+        return httpClient.getConnectTimeout();
     }
 
     /**
@@ -655,8 +652,7 @@ public class ApiClient {
      * @return Api client
      */
     public ApiClient setConnectTimeout(int connectionTimeout) {
-        //httpClient.setConnectTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
-        httpClient = httpClient.newBuilder().connectTimeout(connectionTimeout, TimeUnit.MILLISECONDS).build();
+        httpClient.setConnectTimeout(connectionTimeout, TimeUnit.MILLISECONDS);
         return this;
     }
 
@@ -1083,14 +1079,12 @@ public class ApiClient {
     public <T> void executeAsync(Call call, final Type returnType, final ApiCallback<T> callback) {
         call.enqueue(new Callback() {
             @Override
-            //public void onFailure(Request request, IOException e) {
-            public void onFailure(Call arg0, IOException e) {
+            public void onFailure(Request request, IOException e) {
                 callback.onFailure(new ApiException(e), 0, null);
             }
 
             @Override
-            //public void onResponse(Response response) throws IOException {
-            public void onResponse(Call arg0, Response response) throws IOException {
+            public void onResponse(Response response) throws IOException {
                 T result;
                 try {
                     result = (T) handleResponse(response, returnType);
@@ -1121,7 +1115,7 @@ public class ApiClient {
                 if (response.body() != null) {
                     try {
                         response.body().close();
-                    } catch (Exception e) {
+                    } catch (IOException e) {
                         throw new ApiException(response.message(), e, response.code(), response.headers().toMultimap());
                     }
                 }
@@ -1290,8 +1284,7 @@ public class ApiClient {
      * @return RequestBody
      */
     public RequestBody buildRequestBodyFormEncoding(Map<String, Object> formParams) {
-        //FormEncodingBuilder formBuilder  = new FormEncodingBuilder();
-        FormBody.Builder formBuilder = new FormBody.Builder();
+        FormEncodingBuilder formBuilder  = new FormEncodingBuilder();
         for (Entry<String, Object> param : formParams.entrySet()) {
             formBuilder.add(param.getKey(), parameterToString(param.getValue()));
         }
@@ -1306,8 +1299,7 @@ public class ApiClient {
      * @return RequestBody
      */
     public RequestBody buildRequestBodyMultipart(Map<String, Object> formParams) {
-        //MultipartBuilder mpBuilder = new MultipartBuilder().type(MultipartBuilder.FORM);
-        MultipartBody.Builder mpBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        MultipartBuilder mpBuilder = new MultipartBuilder().type(MultipartBuilder.FORM);
         for (Entry<String, Object> param : formParams.entrySet()) {
             if (param.getValue() instanceof File) {
                 File file = (File) param.getValue();
@@ -1369,10 +1361,9 @@ public class ApiClient {
     private void applySslSettings() {
         try {
             TrustManager[] trustManagers = null;
-            X509TrustManager trustAll = null;
             HostnameVerifier hostnameVerifier = null;
             if (!verifyingSsl) {
-                trustAll = new X509TrustManager() {
+                TrustManager trustAll = new X509TrustManager() {
                     @Override
                     public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
                     @Override
@@ -1407,19 +1398,11 @@ public class ApiClient {
             if (keyManagers != null || trustManagers != null) {
                 SSLContext sslContext = SSLContext.getInstance("TLS");
                 sslContext.init(keyManagers, trustManagers, new SecureRandom());
-                //httpClient.setSslSocketFactory(sslContext.getSocketFactory());
-                SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
-                httpClient = httpClient.newBuilder()
-                        .sslSocketFactory(sslSocketFactory, trustAll)
-                        .build();
+                httpClient.setSslSocketFactory(sslContext.getSocketFactory());
             } else {
-                //httpClient.setSslSocketFactory(null);
-                httpClient = httpClient.newBuilder()
-                        .sslSocketFactory(null, trustAll)
-                        .build();
+                httpClient.setSslSocketFactory(null);
             }
-            //httpClient.setHostnameVerifier(hostnameVerifier);
-            httpClient = httpClient.newBuilder().hostnameVerifier(hostnameVerifier).build();
+            httpClient.setHostnameVerifier(hostnameVerifier);
         } catch (GeneralSecurityException e) {
             throw new RuntimeException(e);
         }
