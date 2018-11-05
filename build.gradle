@@ -75,8 +75,8 @@ if(hasProperty('target') && target == 'android') {
 
 } else {
 
-    //apply plugin: 'java'
-    apply plugin: 'java-library'
+    apply plugin: 'java'
+    //apply plugin: 'java-library'
     apply plugin: 'maven'
 
     sourceCompatibility = JavaVersion.VERSION_1_7
@@ -95,10 +95,11 @@ if(hasProperty('target') && target == 'android') {
 }
 
 dependencies {
-    //implementation 'io.swagger:swagger-annotations:1.5.15'
-    //implementation 'com.squareup.okhttp3:okhttp:3.9.1'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
-    implementation 'com.google.code.gson:gson:2.8.1'
-    implementation 'joda-time:joda-time:2.9.9'
-    testImplementation 'junit:junit:4.12'
+    compile 'io.swagger:swagger-annotations:1.5.15'
+    compile 'com.squareup.okio:okio:2.1.0'
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'    
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile 'joda-time:joda-time:2.9.9'
+    testCompile 'junit:junit:4.12'
 }
